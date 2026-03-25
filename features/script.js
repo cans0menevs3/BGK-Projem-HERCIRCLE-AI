@@ -1,8 +1,8 @@
 // TODO: Google Gemini API Anahtarınızı Buraya Ekleyin
 // Not: Gerçek bir projede API key frontend'de doğrudan bırakılmaz, .env içinde veya backend'de saklanır.
 // Projenin test edilebilmesi için API Key boş ise mock (sahte) verilerle çalışacak bir sistem kurulmuştur.
-const GEMINI_API_KEY = 'AIzaSyCnRSchfRj-DLdanHgfiw7b-BbrdJw3OEQ';
-const SERPER_API_KEY = '027c87e1c8d780b3500a7c586c3daea15660fe3a';
+const GEMINI_API_KEY = ''; // API hatası verdiği için demo moda alındı
+const SERPER_API_KEY = '';
 
 // ====== MENTOR VERİSİ ======
 let mentorsData = [];
