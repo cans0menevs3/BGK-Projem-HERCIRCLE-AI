@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "Ayşe Yılmaz",
+    "photo": "https://randomuser.me/api/portraits/women/44.jpg",
+    "expertise_keywords": ["yazılım", "kodlama", "yazılımcı", "developer", "backend", "python", "javascript", "programlama", "mühendislik"],
+    "bio": "10 yıllık yazılım mühendisi. Kendi şirketini kurduğundan beri kadınlara yazılıma giriş mentörlüğü yapıyor."
+  },
+  {
+    "id": 2,
+    "name": "Av. Zeynep Kaya",
+    "photo": "https://randomuser.me/api/portraits/women/68.jpg",
+    "expertise_keywords": ["hukuk", "dava", "avukat", "hak", "adalet", "sözleşme", "mahkeme", "hukuki süreç", "hakları", "şiddet"],
+    "bio": "Kadın hakları ve iş hukuku uzmanı. Hak arayışındaki kadınlara gönüllü hukuki danışmanlık sağlıyor."
+  },
+  {
+    "id": 3,
+    "name": "Elif Demir",
+    "photo": "https://randomuser.me/api/portraits/women/32.jpg",
+    "expertise_keywords": ["pazarlama", "marketing", "sosyal medya", "reklam", "dijital pazarlama", "iletişim", "seo", "marka"],
+    "bio": "Ödüllü bir dijital pazarlama direktörü. Kendi markasını yaratmak isteyen kadın girişimcilere destek oluyor."
+  },
+  {
+    "id": 4,
+    "name": "Ceren Aydın",
+    "photo": "https://randomuser.me/api/portraits/women/12.jpg",
+    "expertise_keywords": ["psikoloji", "terapi", "destek", "kaygı", "stres", "motivasyon", "mentörlük", "iş hayatı stresi", "özgüven"],
+    "bio": "Uzman Klinik Psikolog. Özellikle kariyer stresi ve özgüven konularında kadınlara online destek grupları düzenliyor."
+  },
+  {
+    "id": 5,
+    "name": "Fatma Şahin",
+    "photo": "https://randomuser.me/api/portraits/women/90.jpg",
+    "expertise_keywords": ["finans", "ekonomi", "muhasebe", "yatırım", "bütçe", "para yönetimi", "girişim sermayesi", "fon", "hibe", "finansal"],
+    "bio": "Finansal danışman ve yatırımcı. Kadınların finansal bağımsızlıklarını kazanmaları için ipuçları ve yol haritaları çiziyor."
+  },
+  {
+    "id": 6,
+    "name": "Gül Çelik",
+    "photo": "https://randomuser.me/api/portraits/women/55.jpg",
+    "expertise_keywords": ["girişimcilik", "startup", "kurucu", "şirket kurmak", "iş fikri", "kosgeb", "e-ticaret", "girişim", "girişimci"],
+    "bio": "Seri girişimci. 3 farklı e-ticaret markası kurdu. Yeni başlayanlara e-ticaret ve girişimcilik süreçlerini aktarıyor."
+  },
+  {
+    "id": 7,
+    "name": "Deniz Yıldız",
+    "photo": "https://randomuser.me/api/portraits/women/35.jpg",
+    "expertise_keywords": ["tasarım", "grafik", "ui", "ux", "dizayn", "görsel", "adobe", "figma", "portfolyo"],
+    "bio": "Kıdemli UX/UI Tasarımcısı. Portfolyo hazırlığı ve tasarım sektöründe iş bulma konusunda uygulamalı destek sunuyor."
+  },
+  {
+    "id": 8,
+    "name": "Seda Aslan",
+    "photo": "https://randomuser.me/api/portraits/women/20.jpg",
+    "expertise_keywords": ["insan kaynakları", "ik", "cv", "mülakat", "iş bulma", "iş görüşmesi", "özgeçmiş", "kariyer planlama", "linkedin"],
+    "bio": "İnsan Kaynakları Müdürü. Mülakat teknikleri, profesyonel CV hazırlama ve doğru işi bulma konularında uzman."
+  },
+  {
+    "id": 9,
+    "name": "Burcu Tekin",
+    "photo": "https://randomuser.me/api/portraits/women/40.jpg",
+    "expertise_keywords": ["eğitim", "akademi", "üniversite", "yüksek lisans", "yurtdışı eğitim", "burs", "akademik", "öğrenci"],
+    "bio": "Akademisyen ve eğitim danışmanı. Yurt dışı yüksek lisans, burs başvuruları ve akademik kariyer düşünenleri yönlendiriyor."
+  },
+  {
+    "id": 10,
+    "name": "Merve Kılıç",
+    "photo": "https://randomuser.me/api/portraits/women/71.jpg",
+    "expertise_keywords": ["veri bilimi", "data science", "yapay zeka", "ai", "makine öğrenmesi", "istatistik", "analiz", "veri"],
+    "bio": "Kıdemli Veri Bilimci. Veri dünyasına adım atmak isteyen kadınlara Python, SQL ve Yapay Zeka konularında mentorluk veriyor."
+  }
+]

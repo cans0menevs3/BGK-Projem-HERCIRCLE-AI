@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HERCIRCLE AI | Yalnız Değilsin, Birlikte Güçlüyüz</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <nav class="navbar glass">
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-circle-nodes"></i> HERCIRCLE AI
+            </div>
+            <div class="nav-links">
+                <a href="#" class="nav-link active">Ana Sayfa</a>
+                <a href="#" id="how-link" class="nav-link">Nasıl Çalışır?</a>
+                <a href="#" id="login-link" class="btn-primary-small">Giriş Yap</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero" id="hero-section">
+            <h1>Kadınların Yapay Zeka<br><span class="highlight">Destek Ağı</span></h1>
+            <p class="subtitle">İş hayatı, eğitim, haklara erişim veya günlük yaşam... Problemini veya hedefini anlat, sana özel çözüm planını ve destek çemberini hemen oluşturalım.</p>
+            
+            <div class="input-container glass">
+                <div class="input-header">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span>Deneyimini veya ihtiyacını bizimle paylaş</span>
+                </div>
+                <textarea id="problem-input" placeholder="Örn: 2 yıldır yazılım öğreniyorum ama iş bulmakta zorlanıyorum. Nereden başlamalıyım?" rows="4"></textarea>
+                <div class="input-actions">
+                    <button class="icon-btn" title="Sesli Anlat (Yakında)"><i class="fa-solid fa-microphone"></i></button>
+                    <button id="analyze-btn" class="btn-primary">
+                        <span>Analiz Et</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+                
+                <!-- Resource Suggestions -->
+                <div id="resource-suggestions" class="resource-suggestions hidden">
+                    <h4 class="suggestions-title"><i class="fa-solid fa-lightbulb"></i> Hemen İnceleyebileceğin Kaynaklar</h4>
+                    <div id="suggestions-grid" class="suggestions-grid">
+                        <!-- Skeletons & Cards will be rendered here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loading-state" class="hidden">
+                <div class="spinner"></div>
+                <p>AI problemini analiz ediyor, sana özel bir çember oluşturuluyor...</p>
+            </div>
+            
+            <!-- Error State -->
+            <div id="error-state" class="hidden">
+                <div class="error-box glass">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <p id="error-message">Bir hata oluştu. Lütfen tekrar deneyin.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results-section" class="results-grid hidden">
+            <!-- Header of Results -->
+            <div class="results-header">
+                <h2>Analiz Sonucun Hazır ✨</h2>
+                <div class="badges">
+                    <span id="category-badge" class="badge">Kategori: Belirsiz</span>
+                    <span id="priority-badge" class="badge">Öncelik: Belirsiz</span>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Çözüm Planı -->
+                <div class="glass card plan-card">
+                    <h3><i class="fa-solid fa-map-location-dot"></i> Çözüm Planı</h3>
+                    <ul id="solution-plan-list" class="timeline">
+                        <!-- JS ile doldurulacak -->
+                    </ul>
+                </div>
+
+                <!-- Görevler -->
+                <div class="glass card tasks-card">
+                    <h3><i class="fa-solid fa-list-check"></i> Senin İçin Görevler</h3>
+                    <div id="tasks-list" class="tasks">
+                        <!-- JS ile doldurulacak -->
+                    </div>
+                </div>
+
+                <!-- Destek Çemberi -->
+                <div class="glass card circle-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid rgba(155, 81, 224, 0.1); padding-bottom: 10px; margin-bottom: 20px;">
+                        <h3 style="margin-bottom: 0; border: none; padding: 0;"><i class="fa-solid fa-users"></i> Destek Çemberi</h3>
+                        <button id="inline-chat-btn" class="btn-secondary" style="padding: 6px 15px; font-size: 0.85rem;"><i class="fa-solid fa-robot"></i> Asistan</button>
+                    </div>
+                    <p class="card-desc" style="margin-top: -5px;">Bu alanda sana yardımcı olabilecek kişiler ve gruplar var.</p>
+                    <div id="circle-list" class="circle-members">
+                        <!-- JS ile doldurulacak -->
+                    </div>
+                    
+                    <!-- Inline Chat (Hidden by default) -->
+                    <div id="inline-chat-section" class="inline-chat hidden">
+                        <div class="inline-chat-messages" id="inline-chat-messages">
+                            <div class="message ai-message">Merhaba! Destek çemberin ve hedeflerin hakkında bana her şeyi sorabilirsin.</div>
+                        </div>
+                        <div class="inline-chat-input">
+                            <input type="text" id="inline-chat-input" placeholder="Çember asistanına yaz...">
+                            <button id="inline-chat-send"><i class="fa-solid fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-footer">
+                <button id="reset-btn" class="btn-secondary"><i class="fa-solid fa-rotate-left"></i> Yeni Problem Gir</button>
+            </div>
+        </section>
+
+        <!-- Join Community Section -->
+        <section class="join-community" id="join-section">
+            <div class="glass card text-center">
+                <h2>Topluluğumuza Katıl</h2>
+                <p>Gücümüzü bir araya getirelim. HerCircle topluluğuna katılarak mentorlük alabilir veya deneyimlerini paylaşabilirsin.</p>
+                <form id="join-form" class="join-form">
+                    <div class="form-group">
+                        <input type="text" id="join-name" placeholder="Adınız" required>
+                        <input type="text" id="join-surname" placeholder="Soyadınız" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="join-email" placeholder="E-posta Adresiniz" required>
+                        <input type="tel" id="join-phone" placeholder="Telefon Numaranız" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Aramıza Katıl <i class="fa-solid fa-heart"></i></button>
+                    <p id="join-success" class="success-text hidden">Harika! Başvurunuz alındı, en kısa sürede sizinle iletişime geçeceğiz.</p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Nasıl Çalışır Modal -->
+    <div id="how-it-works-modal" class="modal hidden">
+        <div class="modal-content glass">
+            <span class="close-btn" id="close-how-btn"><i class="fa-solid fa-xmark"></i></span>
+            <h2>Nasıl Çalışır?</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                    <h3>1. Paylaş</h3>
+                    <p>Karşılaştığın zorluğu, kariyer hedefini veya eğitim hayatındaki bir problemi bize kendi kelimelerinle anlat.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fa-solid fa-brain"></i></div>
+                    <h3>2. Yapay Zeka Analizi</h3>
+                    <p>Gelişmiş AI modelimiz, durumunu analiz ederek sana özel, uygulanabilir bir çözüm planı ve görevler çıkarır.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+                    <h3>3. Çembere Katıl</h3>
+                    <p>Seninle aynı yollardan geçmiş mentorlarla ve vizyoner kadınlarla eşleşip destek ağını kurarsın.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal hidden">
+        <div class="modal-content glass auth-modal-content">
+            <span class="close-btn" id="close-auth-btn"><i class="fa-solid fa-xmark"></i></span>
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="tab-login">Giriş Yap</button>
+                <button class="auth-tab" id="tab-signup">Üye Ol</button>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form">
+                <input type="email" placeholder="E-posta Adresiniz" required>
+                <input type="password" placeholder="Şifreniz" required>
+                <div class="auth-options">
+                    <label><input type="checkbox"> Beni Hatırla</label>
+                    <a href="#" class="forgot-pwd">Şifremi Unuttum</a>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">Giriş Yap</button>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="signup-form" class="auth-form hidden">
+                <div class="form-group">
+                    <input type="text" placeholder="Adınız" required>
+                    <input type="text" placeholder="Soyadınız" required>
+                </div>
+                <input type="email" placeholder="E-posta Adresiniz" required>
+                <input type="password" placeholder="Şifre Belirleyin" required>
+                <button type="submit" class="btn-primary" style="width: 100%;">Kayıt Ol</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget">
+        <button id="chatbot-toggle" class="chatbot-toggle-btn">
+            <i class="fa-solid fa-message"></i>
+        </button>
+        <div id="chatbot-window" class="chatbot-window hidden glass">
+            <div class="chatbot-header">
+                <div class="chat-title"><i class="fa-solid fa-robot"></i> HerCircle Asistan</div>
+                <button id="chatbot-close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="message ai-message">
+                    Merhaba! Ben HerCircle AI Asistanı. Sana nasıl yardımcı olabilirim?
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chat-input" placeholder="Bir şeyler yazın...">
+                <button id="chat-send"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Kadınların birbirini desteklediği ve birlikte güçlendiği sistem. &copy; 2026 HERCIRCLE AI</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
