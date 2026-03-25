@@ -1,11 +1,17 @@
 # HERCIRCLE AI – Women Supporting Women with AI
 
 ## Problem
-Kadınlar ekonomik bağımsızlık, bakım yükü ve haklara erişim konusunda ciddi engellerle karşılaşıyor.
+Kadınlar; iş bulma, çocuk bakımı, eğitim ve haklara erişim gibi konularda çoğu zaman yalnız kalır. 
 En büyük sorun, destek sistemlerinin parçalı olmasıdır. Kadınlar hangi adımı atacaklarını, nereden yardım alacaklarını ve süreci nasıl yöneteceklerini bilemez.
 
 ## Çözüm
 HERCIRCLE AI, kadınların ihtiyaçlarını analiz eden ve onları doğru desteklerle buluşturan yapay zeka destekli bir platformdur. Kullanıcı problemini anlatır, yapay zeka analiz eder ve özel bir çözüm planı, görev listesi ve destek çemberi (mentorlar) oluşturur.
+
+Kullanıcı:
+- Problemini yazar veya anlatır  
+- Yapay zeka bu problemi analiz eder  
+- Kişiye özel çözüm planı oluşturur  
+- Uygun destek çemberi (mentorlar, gönüllüler) önerilir 
 
 ## Canlı Demo
 - **Yayın Linki:** (Eklenecek)
@@ -14,6 +20,8 @@ HERCIRCLE AI, kadınların ihtiyaçlarını analiz eden ve onları doğru destek
 ## Kullanılan Teknolojiler
 - HTML / CSS / JavaScript (Modern Vanilla JS & CSS)
 - Google Gemini API
+-  Node.js / Python (backend )  
+- Lovable / Netlify
 
 ## Nasıl Çalıştırılır?
 
