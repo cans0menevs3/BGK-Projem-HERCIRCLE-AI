@@ -462,7 +462,11 @@ async function sendChatMessage() {
 function mockChatResponse(text) {
     let lowerText = text.toLowerCase();
     
-    if (lowerText.includes("mentor") || lowerText.includes("mentör") || lowerText.includes("kim")) {
+    if (lowerText.includes("süreç") || lowerText.includes("ne kadar sürer") || lowerText.includes("ne zaman") || lowerText.includes("zaman al") || lowerText.includes("iletişim") || lowerText.includes("ne kadar süre")) {
+        return "Süreç oldukça hızlı işler: Mentörlerimizle 'Bağlan' butonuna tıkladığında veya talep açtığında, destek çemberindeki uzmanlarımız 24 ile 48 saat içerisinde platform üzerinden sana mesajla geri dönüş yaparak ilk online görüşmeyi planlar.";
+    } else if (lowerText.includes("nasıl") && (lowerText.includes("mentor") || lowerText.includes("mentör") || lowerText.includes("avukat") || lowerText.includes("psikolog") || lowerText.includes("iletişim"))) {
+        return "Destek çemberindeki uzmanların altındaki 'Bağlan' butonuna bastığında sana ait bir özet (çözüm planı) uzmanımıza iletilir. Uzmanımız müsaitlik durumuna göre sistem içindeki gelen kutundan mesaj atarak seninle hemen bir online tanışma randevusu oluşturacaktır.";
+    } else if (lowerText.includes("mentor") || lowerText.includes("mentör") || lowerText.includes("kim")) {
         return "Sana atanan mentörler alanında uzman gönüllü kadınlardan oluşuyor. Sorunun hukuk, eğitim veya psikoloji olmasına göre 'Destek Çemberi' listesinden uzmanlarla hemen iletişime geçebilirsin.";
     } else if (lowerText.includes("merhaba") || lowerText.includes("selam")) {
         return "Merhaba! HerCircle AI asistanıyım. Sana destek ağımız, mentörlerin veya izlemen gereken plan hakkında nasıl yardımcı olabilirim?";
@@ -625,11 +629,26 @@ async function fetchSerperResources(query) {
         // Mock data when no key
         return new Promise(resolve => {
             setTimeout(() => {
-                resolve([
-                    { title: "Kariyerine Hızlı Bir Başlangıç: Yol Haritası", snippet: query.substring(0,50) + "... konulu eğitimler ve başlangıç rehberleri.", link: "#" },
-                    { title: "Ücretsiz Etkinlikler ve Eğitim Programları", snippet: "Sektöründe ilerlemek isteyenler için harika kurs platformları ve ipuçları...", link: "#" },
-                    { title: "Yeni Başlayanlar İçin Fırsatlar", snippet: "Hedefinize yönelik en iyi kariyer ve gelişim fırsatları...", link: "#" }
-                ]);
+                let text = query.toLowerCase();
+                if (text.includes("hukuk") || text.includes("şiddet") || text.includes("dava") || text.includes("boşanma") || text.includes("hak") || text.includes("avukat") || text.includes("polis")) {
+                    resolve([
+                        { title: "Mor Çatı Kadın Sığınağı Vakfı", snippet: "Acil durum desteği, yasal haklar ve ücretsiz dayanışma sığınağı...", link: "https://morcati.org.tr/" },
+                        { title: "Türkiye Barolar Birliği Kadın Hukuku", snippet: "Bulunduğunuz ildeki baroların ücretsiz adli yardım servislerine ulaşım...", link: "https://www.barobirlik.org.tr/tubas" },
+                        { title: "KADES (Kadın Destek) Uygulaması", snippet: "Emniyet Genel Müdürlüğü acil müdahale uygulaması indirme detayları...", link: "https://www.egm.gov.tr/kades" }
+                    ]);
+                } else if (text.includes("psikolo") || text.includes("üzgün") || text.includes("depresyon") || text.includes("yalnız") || text.includes("kork") || text.includes("mutsuz")) {
+                    resolve([
+                        { title: "Türk Psikologlar Derneği Dayanışma Ağı", snippet: "Ücretsiz terapi seçenekleri ve duygusal destek randevuları...", link: "https://www.psikolog.org.tr/" },
+                        { title: "Alo 183 Sosyal Destek Hattı", snippet: "Aile ve Sosyal Hizmetler Bakanlığı ücretsiz telefon danışmanlık hattı...", link: "https://www.aile.gov.tr/sss/alo-183-sosyal-destek-hatti/" },
+                        { title: "Mindfulness ve Öz Şefkat Kaynakları", snippet: "Zor zamanlardan geçerken kendi kendine uygulayabileceğiniz stres yönetimi pratikleri...", link: "https://www.mindfulnessinstitute.com.tr/" }
+                    ]);
+                } else {
+                    resolve([
+                        { title: "Teknolojide Kadın Derneği (Wtech)", snippet: "Sektöründe ilerlemek isteyen kadınlar için burslu uzmanlık eğitimleri...", link: "https://www.teknolojidekadin.com/" },
+                        { title: "SistersLab - Bilim ve Teknolojide Kadınlar", snippet: "Yazılım atölyeleri, kariyer ağları kurma ve mentörlük fırsatları...", link: "https://sisterslab.org/" },
+                        { title: "Coursera: Öğrenimi Özgürleştir", snippet: "Hedefinize yönelik dünyanın en iyi kariyer sertifikaları ve burslu kurslar...", link: "https://www.coursera.org/courses?query=free" }
+                    ]);
+                }
             }, 2000);
         });
     }
