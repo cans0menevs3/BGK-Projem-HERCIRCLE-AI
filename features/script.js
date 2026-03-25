@@ -449,8 +449,29 @@ async function sendChatMessage() {
         }
     } else {
         setTimeout(() => {
-            appendMessage("Demo Modu: Gerçek bir asistan deneyimi için script.js dosyasına Gemini API anahtarını ekleyin. Şu an sadece test yanıtı veriyorum 😊", 'ai-message');
+            appendMessage(mockChatResponse(text), 'ai-message');
         }, 1000);
+    }
+}
+
+// Akıllı Chatbot Demo Arka Planı
+function mockChatResponse(text) {
+    let lowerText = text.toLowerCase();
+    
+    if (lowerText.includes("mentor") || lowerText.includes("mentör") || lowerText.includes("kim")) {
+        return "Sana atanan mentörler alanında uzman gönüllü kadınlardan oluşuyor. Sorunun hukuk, eğitim veya psikoloji olmasına göre 'Destek Çemberi' listesinden uzmanlarla hemen iletişime geçebilirsin.";
+    } else if (lowerText.includes("merhaba") || lowerText.includes("selam")) {
+        return "Merhaba! HerCircle AI asistanıyım. Sana destek ağımız, mentörlerin veya izlemen gereken plan hakkında nasıl yardımcı olabilirim?";
+    } else if (lowerText.includes("hukuk") || lowerText.includes("avukat") || lowerText.includes("dava")) {
+        return "Hukuki konularda platformumuzdaki kadın hakları savunucusu avukatlarımızdan ücretsiz danışmanlık alabilirsin. Sol panelde sana çıkardığımız çözüm planındaki adımları inceledin mi?";
+    } else if (lowerText.includes("psikoloj") || lowerText.includes("üzgün") || lowerText.includes("destek") || lowerText.includes("yalnız")) {
+        return "Kendini yalnız hissetme. Uzman psikologlarımız ve seninle aynı yollardan geçen kadınların oluşturduğu dayanışma gruplarımız her zaman yanında. Çemberindeki kişilere tıklayarak ilk adımı atabilirsin.";
+    } else if (lowerText.includes("teşekkür") || lowerText.includes("sağol")) {
+        return "Rica ederim, ne zaman istersen buradayım! Birlikte daha güçlüyüz. ❤️";
+    } else if (lowerText.includes("nasıl") || lowerText.includes("ne yap")) {
+        return "Öncelikle sana özel hazırladığımız 'Çözüm Planı'na göz atmanı öneririm. Daha sonra 'Senin İçin Görevler' listesindeki maddeleri uyguladıkça üzerlerini çizebilirsin!";
+    } else {
+        return "Şu an internetsiz Demo modunda çalışıyorum. Bana mentörler, avukatlar, planlar veya nasıl ilerleyeceğin hakkında sorular sorabilirsin!";
     }
 }
 
@@ -587,7 +608,7 @@ async function sendInlineMessage() {
         setTimeout(() => {
             const aiMsg = document.createElement('div');
             aiMsg.className = 'message ai-message';
-            aiMsg.textContent = "Demo yanıt: Gönüllü mentorlerle en kısa sürede eşleşmeniz sağlanacaktır!";
+            aiMsg.textContent = mockChatResponse(text);
             inlineChatMessages.appendChild(aiMsg);
             inlineChatMessages.scrollTop = inlineChatMessages.scrollHeight;
         }, 1000);
