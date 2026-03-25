@@ -124,29 +124,76 @@ async function handleAnalyze() {
     }
 }
 
-// Mock Function for testing locally without API key
+// Mock Function for testing locally without API key (Akıllı Demo Modu)
 function mockAnalyze(text) {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve({
-                kategori: "Kariyer / Eğitim",
-                oncelik: "Orta-Yüksek",
-                cozum_plani: [
-                    { baslik: "Mevcut Durum Analizi", detay: "Sektörel beklentileri ve senin yeteneklerini karşılaştır." },
-                    { baslik: "Eksiklerin Kapatılması", detay: "Kritik teknolojilerde pratik projeler geliştir (portföy hazırlığı)." },
-                    { baslik: "Ağa Katılım (Networking)", detay: "Yazılım topluluklarındaki kadın dayanışma etkinliklerine katıl." }
-                ],
-                gorevler: [
-                    "CV'ni güncelleyip optimize et",
-                    "GitHub'da örnek bir proje yayınla",
-                    "LinkedIn'de sektörden 3 kadın yazılımcı ile bağlantı kur"
-                ],
-                destek_cemberi: [
-                    { isim: "Ayşe Yılmaz", rol: "Kıdemli Yazılım Mühendisi", id: "mentor_1" },
-                    { isim: "Women in Tech Grubu", rol: "Topluluk", id: "group_1" }
-                ]
-            });
-        }, 2000);
+            let lowerText = text.toLowerCase();
+            
+            // Hukuk senaryosu
+            if (lowerText.includes("hukuk") || lowerText.includes("avukat") || lowerText.includes("dava") || lowerText.includes("hak") || lowerText.includes("şiddet") || lowerText.includes("boşanma")  || lowerText.includes("adli") ) {
+                resolve({
+                    kategori: "Hukuki Destek",
+                    oncelik: "Yüksek",
+                    cozum_plani: [
+                        { baslik: "Durum Değerlendirmesi", detay: "Sürecin yasal boyutlarını anlamak için danışmanlıkla görüş." },
+                        { baslik: "Haklarını Öğren", detay: "Medeni Kanun bağlamında yasal haklarını netleştir ve dokümante et." },
+                        { baslik: "Temsil ve Hazırlık", detay: "Gerekli evrakların toplanarak başvuru sürecinin başlatılması." }
+                    ],
+                    gorevler: [
+                        "Platform üzerinden bir hukukçu mentor eşleşmesi talep et",
+                        "Kadın yasal hakları rehberimizi incele",
+                        "Gerekirse bulunduğun ilin Baro Adli Yardım servisine başvur"
+                    ],
+                    destek_cemberi: [
+                        { isim: "Av. Zeynep Kaya", rol: "Kadın Hakları Avukatı", id: "mentor_2" },
+                        { isim: "Hukuki Dayanışma Ağı", rol: "Topluluk", id: "group_2" }
+                    ]
+                });
+            } 
+            // Psikoloji senaryosu
+            else if (lowerText.includes("psikolo") || lowerText.includes("üzgün") || lowerText.includes("depresyon") || lowerText.includes("yalnız") || lowerText.includes("tükenmiş") || lowerText.includes("destek") ) {
+                resolve({
+                    kategori: "Psikolojik Destek",
+                    oncelik: "Orta-Yüksek",
+                    cozum_plani: [
+                        { baslik: "İlk Adım: Kabul Etmek", detay: "Duygularını paylaşmak ve kendini dinlemek için güvenli bir alan oluştur." },
+                        { baslik: "Profesyonel Görüşme", detay: "Uzman bir klinik psikolog ile ilk seansını veya ön görüşmeni planla." },
+                        { baslik: "Dayanışma Çemberi", detay: "Benzer süreçlerden geçen kadınlarla grup dayanışmasına katıl." }
+                    ],
+                    gorevler: [
+                        "Psikolog eşleşmesi için takviminden saat seç",
+                        "Duygusal Dayanıklılık & Farkındalık eğitim videosunu izle",
+                        "Haftalık duygu günlüğü tutmaya başla"
+                    ],
+                    destek_cemberi: [
+                        { isim: "Dr. Elif Yücel", rol: "Klinik Psikolog", id: "mentor_3" },
+                        { isim: "Duygusal Destek Çemberi", rol: "Topluluk", id: "group_3" }
+                    ]
+                });
+            }
+            // Varsayılan / Eğitim-Kariyer (Yazılım vb.)
+            else {
+                resolve({
+                    kategori: "Kariyer / Eğitim",
+                    oncelik: "Orta",
+                    cozum_plani: [
+                        { baslik: "Mevcut Durum Analizi", detay: "Sektörel beklentileri ve senin yeteneklerini karşılaştır." },
+                        { baslik: "Eksiklerin Kapatılması", detay: "Pratik projeler geliştir ve yetkinliklerini görünür kıl." },
+                        { baslik: "Ağa Katılım (Networking)", detay: "Mesleki topluluklardaki dayanışma etkinliklerine katıl." }
+                    ],
+                    gorevler: [
+                        "Özgeçmişini ve portfolyonu optimize et",
+                        "Yaptığın örnek bir çalışmayı çevrimiçi yayınla",
+                        "Sektörden profesyonellerle bağlantı kur (LinkedIn vb.)"
+                    ],
+                    destek_cemberi: [
+                        { isim: "Ayşe Yılmaz", rol: "Kıdemli Profesyonel", id: "mentor_1" },
+                        { isim: "Kariyer Gelişim Grubu", rol: "Topluluk", id: "group_1" }
+                    ]
+                });
+            }
+        }, 1500);
     });
 }
 
