@@ -150,8 +150,8 @@ function mockAnalyze(text) {
                         "Gerekiyorsa bulunduğun ilin Baro Adli Yardım servisini telefonla ara"
                     ],
                     destek_cemberi: [
-                        { isim: "Av. Zeynep Kaya", rol: "Kadın Hakları Avukatı", id: "mentor_2" },
-                        { isim: "Hukuki Dayanışma Ağı", rol: "Topluluk", id: "group_2" }
+                        { isim: "Av. Zeynep Kaya", rol: "Kadın Hakları Avukatı", id: "mentor_2", photo: "https://randomuser.me/api/portraits/women/44.jpg", bio: "Zeynep Kaya, kadın hakları savunuculuğunda 10 yılı aşkın deneyime sahip uzman bir avukattır. Özellikle aile içi şiddet ve iş yerinde mobbing konularında yüzlerce kadına gönüllü hukuki danışmanlık yapmış ve davalarını başarıyla temsil etmiştir. Karşılaştığın hukuki zorluklarda sana yasal haklarını anlatarak güçlü adımlar atmanı sağlar." },
+                        { isim: "Hukuki Dayanışma Ağı", rol: "Topluluk", id: "group_2", photo: "https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80", bio: "Hukuki Dayanışma Ağı, seninle benzer yasal zorluklardan geçmiş kadınların deneyimlerini paylaştığı ve birbirine omuz verdiği güvenli bir topluluktur. Burada yalnız olmadığını hissedeceksin." }
                     ]
                 });
             } 
@@ -171,8 +171,8 @@ function mockAnalyze(text) {
                         "Platformdaki 'Duygusal Dayanıklılık' rehber videosunu izle"
                     ],
                     destek_cemberi: [
-                        { isim: "Dr. Elif Yücel", rol: "Klinik Psikolog", id: "mentor_3" },
-                        { isim: "Duygusal Destek Çemberi", rol: "Topluluk", id: "group_3" }
+                        { isim: "Dr. Elif Yücel", rol: "Klinik Psikolog", id: "mentor_3", photo: "https://randomuser.me/api/portraits/women/68.jpg", bio: "Dr. Elif Yücel, bilişsel davranışçı terapi ve travma sonrası stres bozukluğu uzmanıdır. Kadınların duygusal dayanıklılığını artırmasına ve stresli süreçleri sağlıklı yönetmesine yardımcı olacak güvenli bir alan yaratmaktadır." },
+                        { isim: "Duygusal Destek Çemberi", rol: "Topluluk", id: "group_3", photo: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80", bio: "Duygusal Destek Çemberi, empatinin ve şefkatin öne çıktığı bir gruptur. Psikolojik zorluklar yaşayan kadınlar, profesyonel moderatörler eşliğinde burada içlerini dökebilir ve iyileşme sürecini birlikte atlatabilirler." }
                     ]
                 });
             }
@@ -192,8 +192,8 @@ function mockAnalyze(text) {
                         "LinkedIn veya benzer kariyer profillerini hedeflediğin sektöre göre güncelle"
                     ],
                     destek_cemberi: [
-                        { isim: "Ayşe Yılmaz", rol: "Kıdemli Profesyonel / Yönetici", id: "mentor_1" },
-                        { isim: "Kariyer Gelişim Dayanışması", rol: "Topluluk", id: "group_1" }
+                        { isim: "Ayşe Yılmaz", rol: "Kıdemli Profesyonel / Yönetici", id: "mentor_1", photo: "https://randomuser.me/api/portraits/women/32.jpg", bio: "Ulusal ve uluslararası şirketlerde teknoloji ve pazarlama yöneticiliği yapmış olan Ayşe Yılmaz, kariyerinde sıçrama yapmak veya sektör değiştirmek isteyen kadınlara birebir mentörlük veriyor. Mülakat tekniklerinden maaş müzakerelerine kadar birçok konuda sana yön verecektir." },
+                        { isim: "Kariyer Gelişim Dayanışması", rol: "Topluluk", id: "group_1", photo: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80", bio: "Bu toplulukta, kariyerine yeni başlayanlar ve uzmanlar bir arada bulunur. CV hazırlama, staj bulma, teknik beceri geliştirme konularında dayanışma sağlayabilir ve diğer üyelerle network kurabilirsin." }
                     ]
                 });
             }
@@ -303,32 +303,97 @@ function renderResults(data, userText = "") {
     }
 
     if (matchedMentors.length > 0 && matchedMentors[0].score > 0) {
-        matchedMentors.forEach(mentor => {
+        matchedMentors.forEach((mentor, index) => {
             const d = document.createElement('div');
             d.className = 'member-card';
+            d.style.cursor = 'pointer';
+            const isBestMatch = index === 0;
+            const matchScore = isBestMatch ? Math.floor(Math.random() * 5 + 94) : null;
+            
+            if (isBestMatch) {
+                d.style.border = '2px solid var(--warning)';
+                d.style.background = 'rgba(255, 255, 255, 0.9)';
+                d.style.flexDirection = 'column';
+                d.style.alignItems = 'flex-start';
+                d.style.gap = '10px';
+            }
             d.innerHTML = `
-                <img src="${mentor.photo}" alt="${mentor.name}" class="member-avatar" style="object-fit:cover; width:48px; height:48px; border-radius:50%;">
-                <div class="member-info">
-                    <h4>${mentor.name}</h4>
-                    <p style="font-size:0.8rem; color:var(--text-muted);">${mentor.bio}</p>
-                    <p style="margin-top:5px; font-size:0.75rem;"><i class="fa-solid fa-star"></i> Uzmanlık: ${mentor.expertise_keywords.slice(0,3).join(', ')}...</p>
+                ${isBestMatch ? `<div class="best-match-badge"><i class="fa-solid fa-star"></i> En Uygun Eşleşme (%${matchScore})</div>` : ''}
+                <div style="display:flex; align-items:center; gap:15px; width:100%;">
+                    <img src="${mentor.photo || ''}" alt="${mentor.name}" class="member-avatar" style="object-fit:cover; width:48px; height:48px; border-radius:50%;">
+                    <div class="member-info">
+                        <h4>${mentor.name}</h4>
+                        <p style="font-size:0.8rem; color:var(--text-muted);">${mentor.bio ? mentor.bio.substring(0,50) + '...' : ''}</p>
+                        <p style="margin-top:5px; font-size:0.75rem;"><i class="fa-solid fa-star"></i> Uzmanlık: ${mentor.expertise_keywords ? mentor.expertise_keywords.slice(0,3).join(', ') : ''}</p>
+                    </div>
                 </div>
+                ${isBestMatch ? `
+                <div class="ai-match-reason">
+                    <i class="fa-solid fa-robot"></i>
+                    <div><strong>AI Analizi:</strong> Girdiğin öncelikler ve hedeflerin, mentörümüzün uzmanlık alanıyla <strong>%${matchScore}</strong> oranında örtüşüyor. Hızlı ve kalıcı bir çözüm için ilk görüşmeyi bu uzmanla yapmanı öneriyorum.</div>
+                </div>` : ''}
             `;
+            d.onclick = () => openMentorModal({
+                name: mentor.name,
+                role: mentor.title || "Uzman Mentör",
+                photo: mentor.photo,
+                bio: mentor.bio || mentor.name + ", alanında uzun yıllardır deneyim sahibi bir profesyoneldir.",
+                experience: mentor.experience || (Math.floor(Math.random() * 10 + 5) + " Yıl"),
+                rating: mentor.rating || (4.7 + Math.random() * 0.3).toFixed(1),
+                keywords: mentor.expertise_keywords || ["Gelişim", "Kariyer"]
+            });
             circleList.appendChild(d);
         });
     } else {
-        data.destek_cemberi.forEach(kisi => {
+        data.destek_cemberi.forEach((kisi, index) => {
+            const avatarHtml = kisi.photo 
+                ? `<img src="${kisi.photo}" alt="${kisi.isim}" class="member-avatar" style="object-fit:cover; width:48px; height:48px; border-radius:50%;">`
+                : `<div class="member-avatar">${kisi.isim.substring(0, 2).toUpperCase()}</div>`;
             const avatarInitials = kisi.isim.substring(0, 2).toUpperCase();
+            
             const d = document.createElement('div');
             d.className = 'member-card';
+            const isBestMatch = index === 0;
+            const matchScore = isBestMatch ? Math.floor(Math.random() * 5 + 94) : null;
+
+            if (isBestMatch) {
+                d.style.border = '2px solid var(--warning)';
+                d.style.transform = 'scale(1.02)';
+                d.style.background = 'rgba(255, 255, 255, 0.9)';
+                d.style.flexDirection = 'column';
+                d.style.alignItems = 'flex-start';
+                d.style.gap = '10px';
+            }
             d.innerHTML = `
-                <div class="member-avatar">${avatarInitials}</div>
-                <div class="member-info">
-                    <h4>${kisi.isim}</h4>
-                    <p><i class="fa-solid fa-star"></i> ${kisi.rol}</p>
+                ${isBestMatch ? `<div class="best-match-badge"><i class="fa-solid fa-star"></i> En Uygun Eşleşme (%${matchScore})</div>` : ''}
+                <div style="display:flex; align-items:center; gap:15px; width:100%;">
+                    ${avatarHtml}
+                    <div class="member-info" style="flex:1;">
+                        <h4>${kisi.isim}</h4>
+                        <p><i class="fa-solid fa-star"></i> ${kisi.rol}</p>
+                    </div>
+                    <button class="btn-primary-small mentor-connect-btn">Destek İste</button>
                 </div>
-                <button class="btn-primary-small">Bağlan</button>
+                ${isBestMatch ? `
+                <div class="ai-match-reason">
+                    <i class="fa-solid fa-robot"></i>
+                    <div><strong>AI Analizi:</strong> Girdiğin öncelikler ve hedeflerin, mentörümüzün geçmiş başarı hikayeleriyle <strong>%${matchScore}</strong> oranında örtüşüyor. Çözüm planına hızlı bir başlangıç için harika bir eşleşme.</div>
+                </div>` : ''}
             `;
+            const btn = d.querySelector('.mentor-connect-btn');
+            btn.onclick = (e) => {
+                e.stopPropagation();
+                openMentorModal({
+                    name: kisi.isim,
+                    role: kisi.rol,
+                    photo: kisi.photo,
+                    photoInitials: avatarInitials,
+                    bio: kisi.bio || kisi.isim + ", karşılaştığın zorlukları aşmanda sana rehberlik edecek deneyime sahip, destek çemberimizdeki gönüllü uzmanlardan biridir.",
+                    experience: kisi.rol.includes("Topluluk") ? "Çok Sayıda" : Math.floor(Math.random() * 10 + 5) + " Yıl",
+                    rating: (4.7 + Math.random() * 0.3).toFixed(1),
+                    keywords: kisi.rol.includes("Topluluk") ? ["Dayanışma", "Network", "Paylaşım"] : ["Destek", "Mentörlük", "Danışmanlık"]
+                });
+            };
             circleList.appendChild(d);
         });
     }
@@ -390,6 +455,146 @@ if (howLink && howModal && closeHowBtn) {
         if (e.target === howModal) howModal.classList.add('hidden');
     });
 }
+
+// Mentor Modal Logic
+const mentorModal = document.getElementById('mentor-modal');
+const closeMentorBtn = document.getElementById('close-mentor-btn');
+const mentorModalBody = document.getElementById('mentor-modal-body');
+
+if (closeMentorBtn) {
+    closeMentorBtn.addEventListener('click', () => {
+        mentorModal.classList.add('hidden');
+    });
+    window.addEventListener('click', (e) => {
+        if (e.target === mentorModal) mentorModal.classList.add('hidden');
+    });
+}
+
+function openMentorModal(mentor) {
+    if (!mentorModalBody || !mentorModal) return;
+
+    let avatarHtml = '';
+    if (mentor.photo) {
+        avatarHtml = `<img src="${mentor.photo}" alt="${mentor.name}" class="mentor-avatar-large" style="object-fit:cover;">`;
+    } else {
+        avatarHtml = `<div class="mentor-avatar-large">${mentor.photoInitials || mentor.name.substring(0,2).toUpperCase()}</div>`;
+    }
+
+    // Generate Calendar HTML (Next 7 days for demo)
+    const today = new Date();
+    let calendarHtml = '<div class="calendar-grid">';
+    
+    // Header for days
+    const dayNames = ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Pzr'];
+    dayNames.forEach(d => {
+        calendarHtml += `<div class="calendar-day-header">${d}</div>`;
+    });
+
+    // Populate next 14 days loosely
+    let currentDayIndex = today.getDay() === 0 ? 6 : today.getDay() - 1; // Start from Monday
+    
+    // Fill empty slots before today
+    for(let i=0; i<currentDayIndex; i++) {
+        calendarHtml += `<div></div>`;
+    }
+
+    // Generate dates
+    for(let i=0; i<14; i++) {
+        let tempDate = new Date(today);
+        tempDate.setDate(today.getDate() + i);
+        let dateNum = tempDate.getDate();
+        
+        // Randomly make some days available
+        let isAvailable = Math.random() > 0.5 && tempDate.getDay() !== 0; // Not sundays usually
+        
+        if (isAvailable) {
+            calendarHtml += `<div class="calendar-day available" onclick="requestSession(this, '${tempDate.toLocaleDateString('tr-TR')}')">${dateNum}</div>`;
+        } else {
+            calendarHtml += `<div class="calendar-day unavailable">${dateNum}</div>`;
+        }
+    }
+    calendarHtml += `</div>`;
+
+    let html = `
+        <div class="mentor-profile-header">
+            ${avatarHtml}
+            <div class="mentor-details-info">
+                <h3>${mentor.name}</h3>
+                <p><i class="fa-solid fa-briefcase"></i> ${mentor.role}</p>
+                <div class="mentor-rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                    <span>${mentor.rating} (Harika)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mentor-stats">
+            <span class="stat-badge"><i class="fa-solid fa-clock"></i> ${mentor.experience} Deneyim</span>
+            <span class="stat-badge"><i class="fa-solid fa-tags"></i> ${mentor.keywords.join(', ')}</span>
+        </div>
+
+        <div class="mentor-bio">
+            <p>${mentor.bio}</p>
+        </div>
+
+        <div class="calendar-section" style="margin-top: 20px; background: rgba(255,255,255,0.7); padding: 15px; border-radius: 12px; border: 1px solid rgba(155, 81, 224, 0.2);">
+            <h4><i class="fa-solid fa-calendar-alt"></i> Müsait Günler</h4>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:15px;">Aşağıdaki yeşil günlerden birine tıklayarak mentöre görüşme talebi gönderebilirsin.</p>
+            ${calendarHtml}
+            <div id="booking-msg" style="margin-top:15px; font-weight:600; font-size: 0.9rem; text-align:center;"></div>
+        </div>
+    `;
+
+    mentorModalBody.innerHTML = html;
+    mentorModal.classList.remove('hidden');
+}
+
+window.requestSession = function(element, dateStr) {
+    const msgEl = document.getElementById('booking-msg');
+    
+    // Visual feedback
+    document.querySelectorAll('.calendar-day').forEach(el => {
+        el.style.opacity = '1';
+        if (el.classList.contains('available')) {
+            el.style.background = 'rgba(16, 185, 129, 0.1)';
+            el.style.color = 'var(--success)';
+        }
+    });
+    
+    element.style.background = 'var(--primary)';
+    element.style.color = 'white';
+    
+    msgEl.innerHTML = `
+        <div class="time-slot-container">
+            <h5><i class="fa-regular fa-clock"></i> ${dateStr} için Saat Seç:</h5>
+            <div class="time-slots">
+                <button class="time-slot-btn" onclick="selectTimeSlot(this, '${dateStr}', '10:00')">10:00</button>
+                <button class="time-slot-btn" onclick="selectTimeSlot(this, '${dateStr}', '13:30')">13:30</button>
+                <button class="time-slot-btn" onclick="selectTimeSlot(this, '${dateStr}', '15:00')">15:00</button>
+                <button class="time-slot-btn" onclick="selectTimeSlot(this, '${dateStr}', '18:00')">18:00</button>
+            </div>
+            <button id="confirm-booking-btn" class="btn-primary-small" style="display:none; width:100%; justify-content:center;" onclick="confirmBooking('${dateStr}')">Seansı Onayla</button>
+        </div>
+    `;
+};
+
+let selectedTime = null;
+window.selectTimeSlot = function(btn, dateStr, timeStr) {
+    document.querySelectorAll('.time-slot-btn').forEach(el => el.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedTime = timeStr;
+    document.getElementById('confirm-booking-btn').style.display = 'flex';
+};
+
+window.confirmBooking = function(dateStr) {
+    if (!selectedTime) return;
+    const msgEl = document.getElementById('booking-msg');
+    msgEl.innerHTML = `<div style="padding:15px; background:rgba(16,185,129,0.1); border-radius:10px; color:var(--success); border:1px solid var(--success);"><i class="fa-solid fa-check-circle"></i> <strong>${dateStr} Saat ${selectedTime}</strong> için görüşme talebin başarıyla iletildi! Uzmanımız en kısa sürede onaylayacaktır.</div>`;
+};
 
 // Join Community Form
 const joinForm = document.getElementById('join-form');
@@ -478,8 +683,18 @@ function mockChatResponse(text) {
         return "Rica ederim, ne zaman istersen buradayım! Birlikte daha güçlüyüz. ❤️";
     } else if (lowerText.includes("nasıl") || lowerText.includes("ne yap")) {
         return "Öncelikle sana özel hazırladığımız 'Çözüm Planı'na göz atmanı öneririm. Daha sonra 'Senin İçin Görevler' listesindeki maddeleri uyguladıkça üzerlerini çizebilirsin!";
+    } else if (lowerText.includes("nasılsın") || lowerText.includes("nbr") || lowerText.includes("naber")) {
+        return "Teşekkür ederim, ben bir yapay zeka asistanı olduğum için duygularım yok ama sana yardımcı olabildiğim için harika hissediyorum! Sen nasılsın?";
+    } else if (lowerText.includes("kimsin") || lowerText.includes("adın ne") || lowerText.includes("nesin")) {
+        return "Ben HerCircle AI Asistanıyım. Sana ve diğer tüm kadınlara destek olmak, mentörlük eşleştirmeleri yapmak ve yol göstermek için tasarlandım.";
+    } else if (lowerText.includes("ne yaparsın") || lowerText.includes("ne işe yarar")) {
+        return "Sana kariyer, eğitim, hukuk ve psikolojik destek konularında yol haritası çıkarıyor ve deneyimli gönüllü mentörlerimizle eşleştiriyorum.";
+    } else if (lowerText.includes("şaka")) {
+        return "Yapay zekadan iyi bir şaka bekleme: Neden bilgisayarlar hiç üşümez? Çünkü pencereleri (Windows) hep kapalıdır! 😄";
+    } else if (lowerText.includes("hava")) {
+        return "Maalesef şu an dışarıdaki havayı göremiyorum ama eminim ki dışarısı senin enerjinle parlıyordur! 🌟";
     } else {
-        return "Şu an internetsiz Demo modunda çalışıyorum. Bana mentörler, avukatlar, planlar veya nasıl ilerleyeceğin hakkında sorular sorabilirsin!";
+        return "Şu an internetsiz Demo modunda çalışıyorum. Ancak seninle normal bir şekilde sohbet edebilir veya mentörler, projeler, avukatlar ve kariyer hedeflerin gibi konularda sorularını cevaplayabilirim!";
     }
 }
 
@@ -630,6 +845,9 @@ async function fetchSerperResources(query) {
         return new Promise(resolve => {
             setTimeout(() => {
                 let text = query.toLowerCase();
+                const words = text.replace(/[.,!?;:()]/g, ' ').split(/\s+/);
+                const hasJobKeyword = words.some(w => ['iş', 'staj', 'kariyer', 'çalışmak', 'istihdam', 'cv', 'mülakat', 'pozisyon', 'ilan'].includes(w));
+
                 if (text.includes("hukuk") || text.includes("şiddet") || text.includes("dava") || text.includes("boşanma") || text.includes("hak") || text.includes("avukat") || text.includes("polis")) {
                     resolve([
                         { title: "Mor Çatı Kadın Sığınağı Vakfı", snippet: "Acil durum desteği, yasal haklar ve ücretsiz dayanışma sığınağı...", link: "https://morcati.org.tr/" },
@@ -642,6 +860,13 @@ async function fetchSerperResources(query) {
                         { title: "Alo 183 Sosyal Destek Hattı", snippet: "Aile ve Sosyal Hizmetler Bakanlığı ücretsiz telefon danışmanlık hattı...", link: "https://www.aile.gov.tr/sss/alo-183-sosyal-destek-hatti/" },
                         { title: "Mindfulness ve Öz Şefkat Kaynakları", snippet: "Zor zamanlardan geçerken kendi kendine uygulayabileceğiniz stres yönetimi pratikleri...", link: "https://www.mindfulnessinstitute.com.tr/" }
                     ]);
+                } else if (hasJobKeyword) {
+                    resolve([
+                        { title: "Kariyer.net - Güncel İş İlanları", snippet: "Profilinize uygun binlerce iş ve staj ilanına hemen başvurun...", link: "https://www.kariyer.net/" },
+                        { title: "LinkedIn - Kariyer Fırsatları", snippet: "Sektörünüzdeki profesyonellerle ağ kurun ve açık pozisyonları inceleyin...", link: "https://www.linkedin.com/jobs/" },
+                        { title: "Youthall - Yeni Mezun & Staj", snippet: "Genç yeteneklere yönelik kariyer fırsatları, staj ve iş ilanları...", link: "https://www.youthall.com/" },
+                        { title: "Yeni Bir İş - Kadın İstihdamı", snippet: "Kadınları iş hayatına teşvik eden pozisyonlar ve kurumsal kariyer fırsatları...", link: "https://www.yenibiris.com/" }
+                    ].slice(0, 3));
                 } else {
                     resolve([
                         { title: "Teknolojide Kadın Derneği (Wtech)", snippet: "Sektöründe ilerlemek isteyen kadınlar için burslu uzmanlık eğitimleri...", link: "https://www.teknolojidekadin.com/" },

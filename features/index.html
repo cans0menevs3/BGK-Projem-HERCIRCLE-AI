@@ -23,7 +23,8 @@
             <div class="nav-links">
                 <a href="#" class="nav-link active">Ana Sayfa</a>
                 <a href="#" id="how-link" class="nav-link">Nasıl Çalışır?</a>
-                <a href="#" id="login-link" class="btn-primary-small">Giriş Yap</a>
+                <a href="#success-section" class="nav-link">Başarı Hikayeleri</a>
+                <a href="#" id="login-link" class="btn-primary-small">Aramıza Katıl</a>
             </div>
         </div>
     </nav>
@@ -32,18 +33,18 @@
         <!-- Hero Section -->
         <section class="hero" id="hero-section">
             <h1>Kadınların Yapay Zeka<br><span class="highlight">Destek Ağı</span></h1>
-            <p class="subtitle">İş hayatı, eğitim, haklara erişim veya günlük yaşam... Problemini veya hedefini anlat, sana özel çözüm planını ve destek çemberini hemen oluşturalım.</p>
+            <p class="subtitle">Her yaştan ve her meslekten kadının yanında! İş hayatı, eğitim, haklara erişim veya günlük yaşam... Problemini veya kariyer hedefini anlat, sana özel çözüm planını ve destek çemberini hemen oluşturalım.</p>
             
             <div class="input-container glass">
                 <div class="input-header">
                     <i class="fa-solid fa-wand-magic-sparkles"></i>
                     <span>Deneyimini veya ihtiyacını bizimle paylaş</span>
                 </div>
-                <textarea id="problem-input" placeholder="Örn: 2 yıldır yazılım öğreniyorum ama iş bulmakta zorlanıyorum. Nereden başlamalıyım?" rows="4"></textarea>
+                <textarea id="problem-input" placeholder="Örn: 2 yıldır yazılım öğreniyorum ama iş bulmakta zorlanıyorum / Lise öğrencisiyim, hangi üniversite bölümünü seçmeliyim? / Ev hanımıyım, kendi işimi kurmak istiyorum. Nereden başlamalıyım?" rows="4"></textarea>
                 <div class="input-actions">
                     <button class="icon-btn" title="Sesli Anlat (Yakında)"><i class="fa-solid fa-microphone"></i></button>
                     <button id="analyze-btn" class="btn-primary">
-                        <span>Analiz Et</span>
+                        <span>Çözüm Planımı Çıkar ✨</span>
                         <i class="fa-solid fa-arrow-right"></i>
                     </button>
                 </div>
@@ -125,7 +126,50 @@
             </div>
             
             <div class="action-footer">
-                <button id="reset-btn" class="btn-secondary"><i class="fa-solid fa-rotate-left"></i> Yeni Problem Gir</button>
+                <button id="reset-btn" class="btn-secondary"><i class="fa-solid fa-rotate-left"></i> Yeni Bir Hedef Belirle</button>
+            </div>
+        </section>
+
+        <!-- Success Stories Section -->
+        <section class="success-stories" id="success-section" style="margin: 60px 0;">
+            <div class="results-header" style="margin-bottom: 40px;">
+                <h2>Birlikte Başaranlar 🌟</h2>
+                <p class="subtitle" style="margin-bottom: 0;">HerCircle AI ile yollarını çizen, güçlenen ve hedeflerine ulaşan kadınlardan ilham al.</p>
+            </div>
+            
+            <div class="success-grid">
+                <!-- Card 1 -->
+                <div class="success-card glass">
+                    <div class="success-avatar" style="background: linear-gradient(135deg, #fbcfe8, #ec4899);">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <div class="success-content">
+                        <h3>Ayşe (26) <span>Daha Güçlü Adımlarla Başlıyor</span></h3>
+                        <p>Platformumuzun uzman klinik psikologları ve hukuki destek mentörleri sayesinde, Ayşe uzun süredir devam eden zorlu boşanma sürecini sorunsuz ve psikolojik olarak güçlü bir şekilde atlattı. Şimdi kendi girişimini kurmaya hazırlanıyor.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="success-card glass">
+                    <div class="success-avatar" style="background: linear-gradient(135deg, #bfdbfe, #3b82f6);">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <div class="success-content">
+                        <h3>Cansu (20) <span>Yazılım Kariyerinde Hızla Yükseliyor</span></h3>
+                        <p>1. sınıf bilgisayar mühendisliği öğrencisiyken nereden başlayacağını bilemeyen Cansu, yazılım alanındaki kıdemli kadın mentörlerle yaptığı haftalık seanslar sayesinde şimdiden uluslararası teknoloji şirketlerinde staj teklifleri değerlendiriyor.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="success-card glass">
+                    <div class="success-avatar" style="background: linear-gradient(135deg, #fef08a, #f59e0b);">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div class="success-content">
+                        <h3>Umay (15) <span>Hayallerine Giden Yolda Tam Burs Kazandı</span></h3>
+                        <p>Lise tercihleri ve eğitim vizyonu aşamasında HerCircle üzerinden eğitim mentörleriyle bir araya gelen Umay, potansiyelini keşfederek girdiği sınavlarda büyük başarı elde etti ve hayalindeki liseyi tam burslu kazandı.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -149,6 +193,16 @@
             </div>
         </section>
     </main>
+
+    <!-- Mentor Details Modal -->
+    <div id="mentor-modal" class="modal hidden">
+        <div class="modal-content glass mentor-modal-content">
+            <span class="close-btn" id="close-mentor-btn"><i class="fa-solid fa-xmark"></i></span>
+            <div id="mentor-modal-body">
+                <!-- İçerik JS ile doldurulacak -->
+            </div>
+        </div>
+    </div>
 
     <!-- Nasıl Çalışır Modal -->
     <div id="how-it-works-modal" class="modal hidden">
