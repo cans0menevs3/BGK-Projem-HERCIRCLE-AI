@@ -673,8 +673,8 @@ function mockChatResponse(text) {
         return "Destek çemberindeki uzmanların altındaki 'Bağlan' butonuna bastığında sana ait bir özet (çözüm planı) uzmanımıza iletilir. Uzmanımız müsaitlik durumuna göre sistem içindeki gelen kutundan mesaj atarak seninle hemen bir online tanışma randevusu oluşturacaktır.";
     } else if (lowerText.includes("mentor") || lowerText.includes("mentör") || lowerText.includes("kim")) {
         return "Sana atanan mentörler alanında uzman gönüllü kadınlardan oluşuyor. Sorunun hukuk, eğitim veya psikoloji olmasına göre 'Destek Çemberi' listesinden uzmanlarla hemen iletişime geçebilirsin.";
-    } else if (lowerText.includes("merhaba") || lowerText.includes("selam")) {
-        return "Merhaba! HerCircle AI asistanıyım. Sana destek ağımız, mentörlerin veya izlemen gereken plan hakkında nasıl yardımcı olabilirim?";
+    } else if (lowerText.includes("merhaba") || lowerText.includes("selam") || lowerText.includes("yardım") || lowerText.includes("destek ol")) {
+        return "Merhaba! Ben HerCircle AI asistanıyım. Sana kariyer, eğitim, hukuki veya psikolojik destek konularında yol göstermek için buradayım. Konuyu biraz açar mısın?";
     } else if (lowerText.includes("hukuk") || lowerText.includes("avukat") || lowerText.includes("dava")) {
         return "Hukuki konularda platformumuzdaki kadın hakları savunucusu avukatlarımızdan ücretsiz danışmanlık alabilirsin. Sol panelde sana çıkardığımız çözüm planındaki adımları inceledin mi?";
     } else if (lowerText.includes("psikoloj") || lowerText.includes("üzgün") || lowerText.includes("destek") || lowerText.includes("yalnız")) {
@@ -687,14 +687,21 @@ function mockChatResponse(text) {
         return "Teşekkür ederim, ben bir yapay zeka asistanı olduğum için duygularım yok ama sana yardımcı olabildiğim için harika hissediyorum! Sen nasılsın?";
     } else if (lowerText.includes("kimsin") || lowerText.includes("adın ne") || lowerText.includes("nesin")) {
         return "Ben HerCircle AI Asistanıyım. Sana ve diğer tüm kadınlara destek olmak, mentörlük eşleştirmeleri yapmak ve yol göstermek için tasarlandım.";
-    } else if (lowerText.includes("ne yaparsın") || lowerText.includes("ne işe yarar")) {
+    } else if (lowerText.includes("ne yaparsın") || lowerText.includes("ne işe yarar") || lowerText.includes("görev")) {
         return "Sana kariyer, eğitim, hukuk ve psikolojik destek konularında yol haritası çıkarıyor ve deneyimli gönüllü mentörlerimizle eşleştiriyorum.";
     } else if (lowerText.includes("şaka")) {
         return "Yapay zekadan iyi bir şaka bekleme: Neden bilgisayarlar hiç üşümez? Çünkü pencereleri (Windows) hep kapalıdır! 😄";
     } else if (lowerText.includes("hava")) {
         return "Maalesef şu an dışarıdaki havayı göremiyorum ama eminim ki dışarısı senin enerjinle parlıyordur! 🌟";
     } else {
-        return "Şu an internetsiz Demo modunda çalışıyorum. Ancak seninle normal bir şekilde sohbet edebilir veya mentörler, projeler, avukatlar ve kariyer hedeflerin gibi konularda sorularını cevaplayabilirim!";
+        const fallbacks = [
+            "Anlıyorum. HerCircle AI olarak sana en iyi desteği sunmak için buradayım. Kariyer, eğitim veya psikolojik destek alanlarından hangisi üzerine konuşmak istersin?",
+            "Bu konuda sana yardımcı olabilecek harika uzmanlarımız var! Senin durumunu biraz daha detaylı yazarsan, sağ sayfadaki Çözüm Planını ona göre güncelleyebilirim.",
+            "Harika bir nokta! Daha fazla detay verir misin, böylece seni doğru mentöre veya topluluğa yönlendirebilirim.",
+            "Seni çok iyi anlıyorum. Şu an ana ekrandaki 'Destek Çemberi' üzerinden uzmanlarımızla direkt görüşme planlayabileceğini hatırlatmak isterim.",
+            "Bunu tam olarak yapay zeka hafızamla kavrayamadım ama merak etme! Mentörlerimiz bu konuyu seninle detaylıca konuşmak için takvimlerinde seni bekliyor."
+        ];
+        return fallbacks[Math.floor(Math.random() * fallbacks.length)];
     }
 }
 
