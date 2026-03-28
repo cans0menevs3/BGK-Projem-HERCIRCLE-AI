@@ -2,7 +2,7 @@
 
 ## Problem
 Kadınlar; iş bulma, çocuk bakımı, eğitim ve haklara erişim gibi konularda çoğu zaman yalnız kalır. 
-En büyük sorun, destek sistemlerinin parçalı olmasıdır. Kadınlar hangi adımı atacaklarını, nereden yardım alacaklarını ve süreci nasıl yöneteceklerini bilemez.
+En büyük sorun, destek sistemlerinin parçalı olmasıdır. Kadınlar hangi adımı atacaklarını, nereden yardım alacaklarını ve süreci nasıl yöneteceklerini kararlaştıramaz.
 
 ## Çözüm
 HERCIRCLE AI, kadınların ihtiyaçlarını analiz eden ve onları doğru desteklerle buluşturan yapay zeka destekli bir platformdur. Kullanıcı problemini anlatır, yapay zeka analiz eder ve özel bir çözüm planı, görev listesi ve destek çemberi (mentorlar) oluşturur.
