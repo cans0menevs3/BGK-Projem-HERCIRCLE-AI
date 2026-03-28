@@ -14,8 +14,8 @@ Kullanıcı:
 - Uygun destek çemberi (mentorlar, gönüllüler) önerilir 
 
 ## Canlı Demo
-- **Yayın Linki:** (Eklenecek)
-- **Demo Video:** (Eklenecek)
+- **Yayın Linki:**https://bgk-projem-hercircle-ai.vercel.app
+- **Demo Video:** https://youtu.be/bt70pGWnJY4?si=Lfyyh5YgAElyF5ik
 
 ## Kullanılan Teknolojiler
 - HTML / CSS / JavaScript (Modern Vanilla JS & CSS)
